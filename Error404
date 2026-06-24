@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 | Command Life</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#020617;
+    color:#22c55e;
+    font-family:Consolas, Monaco, monospace;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.container{
+    width:90%;
+    max-width:900px;
+}
+
+.terminal{
+    background:#0f172a;
+    border:1px solid #1e293b;
+    border-radius:14px;
+    padding:30px;
+    box-shadow:0 0 40px rgba(34,197,94,.15);
+}
+
+.header{
+    color:#94a3b8;
+    margin-bottom:25px;
+}
+
+.line{
+    opacity:0;
+    white-space:pre-wrap;
+    overflow:hidden;
+    border-right:2px solid transparent;
+    animation:
+        typing 2.5s steps(60,end) forwards,
+        fadeIn .2s forwards;
+}
+
+.line:nth-child(2){animation-delay:0s;}
+.line:nth-child(3){animation-delay:2.5s;}
+.line:nth-child(4){animation-delay:5s;}
+.line:nth-child(5){animation-delay:7.5s;}
+.line:nth-child(6){animation-delay:10s;}
+.line:nth-child(7){animation-delay:12.5s;}
+
+.error{
+    color:#ef4444;
+}
+
+.quote{
+    color:#facc15;
+}
+
+.prompt{
+    color:#22c55e;
+}
+
+.cursor{
+    display:inline-block;
+    width:10px;
+    animation:blink 1s infinite;
+}
+
+.bg-code{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.bg-code span{
+    position:absolute;
+    color:rgba(34,197,94,.06);
+    font-size:14px;
+    animation:fall linear infinite;
+}
+
+@keyframes typing{
+    from{width:0}
+    to{width:100%}
+}
+
+@keyframes fadeIn{
+    to{opacity:1}
+}
+
+@keyframes blink{
+    50%{opacity:0}
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-100vh);
+    }
+    to{
+        transform:translateY(100vh);
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-code" id="bg"></div>
+
+<div class="container">
+    <div class="terminal">
+
+        <div class="header">
+            >>> ERROR 404
+        </div>
+
+        <div class="line error">
+Traceback (most recent call last):
+        </div>
+
+        <div class="line">
+File "command_life.py", line 404, in navigate
+        </div>
+
+        <div class="line">
+raise PageNotFoundError("Requested path does not exist")
+        </div>
+
+        <div class="line error">
+PageNotFoundError: 404
+        </div>
+
+        <div class="line quote">
+"404: Destination unavailable. Experience gained."
+        </div>
+
+        <div class="line prompt">
+>>> continue_journey() = True
+        </div>
+
+        <div class="line prompt">
+>>> <span class="cursor">_</span>
+        </div>
+
+    </div>
+</div>
+
+<script>
+const bg = document.getElementById('bg');
+
+const snippets = [
+'while alive:',
+'continue',
+'try:',
+'except:',
+'return hope',
+'404',
+'keep_moving()',
+'print("dream")',
+'raise Courage',
+'future += 1'
+];
+
+for(let i=0;i<60;i++){
+    const s=document.createElement('span');
+    s.innerText=snippets[Math.floor(Math.random()*snippets.length)];
+    s.style.left=Math.random()*100+'vw';
+    s.style.animationDuration=(10+Math.random()*20)+'s';
+    s.style.animationDelay=Math.random()*-20+'s';
+    bg.appendChild(s);
+}
+</script>
+
+</body>
+</html>
